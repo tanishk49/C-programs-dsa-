@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100  // Define the maximum size of the array
+
+// create function to insert element at first position
+void insertAtFirst(int arr[], int *size, int element) {
+    //Logic--> Shift all elements to the right by one position
+    for (int i = *size; i > 0; i--) {
+        arr[i] = arr[i - 1];
+    }
+    // Insert the new element at the first position
+    arr[0] = element;
+    // Increment the size of the array
+    (*size)++;
+}
+// main function to implement
+int main() {
+    int arr[MAX_SIZE];
+    int size, element;
+
+    // Input the number of elements want to enter in the array
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &size);
+
+    // Enter the elements of the array
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Enter the element to be inserted at the first position
+    printf("Enter the element to be inserted at the first position: ");
+    scanf("%d", &element);
+
+    // Check if the array has space to insert a new element
+    if (size >= MAX_SIZE) {
+        printf("Array is full, cannot insert new element.\n");
+        return 1;
+    }
+
+    // Insert the element at the first position
+    insertAtFirst(arr, &size, element);
+
+    // Output the updated array after inserting element 
+    printf("Array after inserting the element at the first position:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
