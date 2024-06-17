@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100  // Define the maximum size of the array
+
+// create function to insert element at last position
+void insertAtLast(int arr[], int *size, int element) {
+    // Insert the new element at the last position
+    arr[*size] = element;
+    // Logic--> Places the new element at the index equal to the current size of the array.
+    (*size)++; // Increment the size of the array to reflect the addition of the new element
+}
+// main function to implement
+int main() {
+    int arr[MAX_SIZE];
+    int size, element;
+
+    // Input the number of elements in the array
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &size);
+
+    // Input the elements of the array
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Input the element to be inserted at the last position
+    printf("Enter the element to be inserted at the last position: ");
+    scanf("%d", &element);
+
+    // Check if the array has space to insert a new element
+    if (size >= MAX_SIZE) {
+        printf("Array is full, cannot insert new element.\n");
+        return 1;
+    }
+
+    // Insert the element at the last position
+    insertAtLast(arr, &size, element);
+
+    // Output the updated array
+    printf("Array after inserting the element at the last position:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
