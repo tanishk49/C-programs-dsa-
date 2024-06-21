@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+// Function to insert an element at a specific position in an array
+void insertElement(int arr[], int *n, int element, int position) {
+    // Shift elements to the right to make space for the new element
+    for (int i = *n; i > position; i--) {
+        arr[i] = arr[i - 1];
+    }
+    // Insert the new element
+    arr[position] = element;
+    // Increment the size of the array
+    (*n)++;
+}
+
+int main() {
+    int arr[100], n, element, position;
+
+    // Get the number of elements in the array
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    // Get the elements of the array
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Get the element to be inserted and the position
+    printf("Enter the element to be inserted: ");
+    scanf("%d", &element);
+    printf("Enter the position at which the element should be inserted: ");
+    scanf("%d", &position);
+
+    // Check if the position is valid
+    if (position < 0 || position > n) {
+        printf("Invalid position! Please enter a position between 0 and %d\n", n);
+        return 1;
+    }
+
+    // Insert the element
+    insertElement(arr, &n, element, position);
+
+    // Print the updated array
+    printf("Array after insertion:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
